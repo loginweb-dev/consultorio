@@ -1,0 +1,65 @@
+	<div class="loader">
+	<div class="preloader-wrapper big active">
+	  <div class="spinner-layer spinner-blue">
+		<div class="circle-clipper left">
+		  <div class="circle"></div>
+		</div><div class="gap-patch">
+		  <div class="circle"></div>
+		</div><div class="circle-clipper right">
+		  <div class="circle"></div>
+		</div>
+	  </div>
+
+	  <div class="spinner-layer spinner-red">
+		<div class="circle-clipper left">
+		  <div class="circle"></div>
+		</div><div class="gap-patch">
+		  <div class="circle"></div>
+		</div><div class="circle-clipper right">
+		  <div class="circle"></div>
+		</div>
+	  </div>
+
+	  <div class="spinner-layer spinner-yellow">
+		<div class="circle-clipper left">
+		  <div class="circle"></div>
+		</div><div class="gap-patch">
+		  <div class="circle"></div>
+		</div><div class="circle-clipper right">
+		  <div class="circle"></div>
+		</div>
+	  </div>
+
+	  <div class="spinner-layer spinner-green">
+		<div class="circle-clipper left">
+		  <div class="circle"></div>
+		</div><div class="gap-patch">
+		  <div class="circle"></div>
+		</div><div class="circle-clipper right">
+		  <div class="circle"></div>
+		</div>
+	  </div>
+	</div>
+  	</div>
+
+	<nav>
+		<div class="nav-wrapper">
+		<a href="/" class="brand-logo"><%-title%></a>
+		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+		</div>
+	</nav>
+
+	<ul class="sidenav" id="mobile-demo">
+		<li><div class="user-view">
+		  <div class="background">
+			<img src="img/footer_bg.jpg">
+		  </div>
+		  <a href="#!user"><img class="circle" src="https://pbs.twimg.com/profile_images/877063380720173057/cTzoJiZ2_400x400.jpg"></a>
+		  <a href="#!name"><span class="white-text name">Free Time Learn</span></a>
+		  <a href="#!email"><span class="white-text email">freetimelearn@gmail.com</span></a>
+		</div></li>
+		<% for(var i=0; i < menu.length; i++){ %>
+		  <li><a href="<%-menu[i].url%>"><%-menu[i].title%></a></li>
+		  <% } %>
+	</ul>
+  

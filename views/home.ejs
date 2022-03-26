@@ -1,65 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <style>
-      .nav-wrapper {
-        background-color: #167A9E !important;
-      }
-
-      .carousel .carousel-item {
-          width: 340px !important;
-          padding: 2px;
-      }
-
-      .card{ 
-          border-radius: 80px; 
-          position: relative !important;
-          right: 2px !important;
-      }
-
-
-      .loader {
-        position: absolute;
-        bottom: 50%;
-        right: 50%;
-      }
-
-    </style>
+    <%-include('partials/header')%>
+  <style>
+    .carousel .carousel-item {
+        width: 340px !important;
+        padding: 2px;
+    }
+    .card{ 
+        border-radius: 80px; 
+        position: relative !important;
+        right: 2px !important;
+    }
+  </style>
   </head>
-
-
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="/" class="brand-logo"><%-title%></a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      </div>
-    </nav>
-  
-    <ul class="sidenav" id="mobile-demo">
-      <% for(var i=0; i < menu.length; i++){ %>
-        <li><a href="<%-menu[i].url%>"><%-menu[i].title%></a></li>
-        <% } %>
-    </ul>
+
+    <%-include('partials/menu')%>
 
     <div class="carousel">
       <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/April2021/4xMoQBrKcyvPv9WtM9QNDJhZ9VgAgxAyAL755uzL.jpeg"></a>
-
       <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/April2021/kxr92QsNoWxTnYhg0cbtz0JEWUHdgsUSryYoqT0W.jpeg"></a>
       <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/October2020/YSTpjV6pb3PzPSR2xcYZssz9zeE9OX5aSQ0CxxC9.jpeg"></a>
-      
     </div>
 
-
-   
     <ul class="collection">
       <li class="collection-item avatar">
         <i class="material-icons circle blue">domain</i>
@@ -87,72 +51,16 @@
       </li>
     </ul>
 
-
-
-     
-      <div class="loader">
-          <div class="preloader-wrapper big active">
-            <div class="spinner-layer spinner-blue">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-
-            <div class="spinner-layer spinner-red">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-
-            <div class="spinner-layer spinner-yellow">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-
-            <div class="spinner-layer spinner-green">
-              <div class="circle-clipper left">
-                <div class="circle"></div>
-              </div><div class="gap-patch">
-                <div class="circle"></div>
-              </div><div class="circle-clipper right">
-                <div class="circle"></div>
-              </div>
-            </div>
-          </div>
-      </div>
-
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <%-include('partials/footer')%>
 
     <script>
-
       $(document).ready(function(){
-        $('.sidenav').sidenav();
         $('.carousel').carousel({
           fullWidth: true
         });
-
-        M.toast({html: 'Bienvenido a LiveMedic v2.0'})
-
-        $('.loader').attr("hidden",true)
-
       });
-
     </script>
+    
   </body>
 </html>
       

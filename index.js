@@ -10,8 +10,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
 
-
-
 app.get('/', async (req, res) =>{
 	var menu = await axios(process.env.API+'menu')
 	res.render('home', { title: 'Livemedic Edgley', menu: menu.data})
@@ -20,6 +18,11 @@ app.get('/', async (req, res) =>{
 app.get('/login', async (req, res) =>{
 	var menu = await axios(process.env.API+'menu')
 	res.render('login', { title: 'Livemedic Edgley', menu: menu.data})
+})
+
+app.get('/especialistas', async (req, res) =>{
+	var menu = await axios(process.env.API+'menu')
+	res.render('especialistas', { title: 'Livemedic Edgley', menu: menu.data})
 })
 
 app.listen(process.env.PORT, () => {
