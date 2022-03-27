@@ -21,35 +21,32 @@
     <div class="carousel">
       <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/April2021/4xMoQBrKcyvPv9WtM9QNDJhZ9VgAgxAyAL755uzL.jpeg"></a>
       <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/April2021/kxr92QsNoWxTnYhg0cbtz0JEWUHdgsUSryYoqT0W.jpeg"></a>
-      <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/blocks/October2020/YSTpjV6pb3PzPSR2xcYZssz9zeE9OX5aSQ0CxxC9.jpeg"></a>
+      <a class="carousel-item" href="#"><img src="https://livemedicedgley.com.bo/storage/app/Telemedicina-1250152623-scaled.jpg"></a>
     </div>
 
     <ul class="collection">
-      <li class="collection-item avatar">
-        <i class="material-icons circle blue">domain</i>
-        <span class="title">Especialistas</span>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle green">insert_chart</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-      <li class="collection-item avatar">
-        <i class="material-icons circle red">play_arrow</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-           Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
+
+      <%for(var i=0; i < specialities.length; i++){%>
+
+        <li class="collection-item avatar">
+          <img src="https://livemedicedgley.com.bo/storage/app/256x256bb.jpg" alt="" class="circle">
+          <span class="title"><%-specialities[i].name%></span>
+          <p>
+            Precios: <br>
+            Consulta: <%-specialities[i].price%>
+            <br>
+             Re Consulta: <%-specialities[i].price_alt%>
+          </p>
+          <a href="#!" class="secondary-content"><i class="material-icons">info_outline</i></a>
+        </li>
+
+        <%}%>
+      
     </ul>
+
+    <video class="responsive-video" controls>
+      <source src="https://livemedicedgley.com.bo/storage/app/VIDEO.mp4" type="video/mp4">
+    </video>
 
     <%-include('partials/footer')%>
 
@@ -58,7 +55,12 @@
         $('.carousel').carousel({
           fullWidth: true
         });
+       
+        // window.AppInventor.setWebViewString("HOLA");
+        // M.toast({html: window.AppInventor.getWebViewString('percy'), classes: 'rounded'})
+        // M.toast({html: 'Hola', classes: 'rounded'})
       });
+
     </script>
     
   </body>

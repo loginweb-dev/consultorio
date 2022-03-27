@@ -11,18 +11,36 @@ app.use(cors())
 
 
 app.get('/', async (req, res) =>{
-	var menu = await axios(process.env.API+'menu')
-	res.render('home', { title: 'Livemedic Edgley', menu: menu.data})
+
+
+
+	if (req.query.user) {
+		var specialities = await axios(process.env.API+'specialities')
+		var user = await axios(process.env.API+'cliente/'+req.query.user)
+		var menu = await axios(process.env.API+'menu/login')
+		res.render('home', { title: process.env.TITLE, menu: menu.data, specialities: specialities.data})
+	} else {
+		var menu = await axios(process.env.API+'menu')
+		var specialities = await axios(process.env.API+'specialities')
+		res.render('home', { title: process.env.TITLE, menu: menu.data, specialities: specialities.data})
+	}
 })
 
 app.get('/login', async (req, res) =>{
 	var menu = await axios(process.env.API+'menu')
-	res.render('login', { title: 'Livemedic Edgley', menu: menu.data})
+	res.render('login', { title: 'Ingreso', menu: menu.data})
 })
 
-app.get('/especialistas', async (req, res) =>{
+app.get('/products', async (req, res) =>{
 	var menu = await axios(process.env.API+'menu')
-	res.render('especialistas', { title: 'Livemedic Edgley', menu: menu.data})
+	var especialistas = await axios(process.env.API+'specialists')
+	res.render('products', { title: process.env.TITLE, menu: menu.data, especialistas: especialistas.data})
+})
+
+app.get('/product', async (req, res) =>{
+	var menu = await axios(process.env.API+'menu')
+	var medico = await axios(process.env.API+'medico'+'/'+req.query.id)
+	res.render('product', { title: 'Medico', menu: menu.data, medico: medico.data})
 })
 
 app.listen(process.env.PORT, () => {

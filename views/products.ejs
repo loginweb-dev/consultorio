@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%-include('partials/header')%>
+  </head>
+  <body>
+
+    <%-include('partials/menu')%>
+    <div class="input-field col s6">
+      <i class="material-icons prefix">search</i>
+      <input id="icon_prefix" type="search" class="validate">
+      <label for="icon_prefix">criterio de busqueda</label>
+    </div>
+              <%for(var i=0; i < especialistas.length; i++){%>
+            
+                    <div class="col s12 m8 offset-m2 l6 offset-l3">
+                      <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row valign-wrapper">
+                          <div class="col s3">
+                            <img src="https://livemedicedgley.com.bo/storage/<%-especialistas[i].user.avatar%>" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                          </div>
+                          <div class="col s9">
+                            <h6><%-especialistas[i].full_name%> - <%-especialistas[i].phones%></h6>
+                            <% var meta = especialistas[i].specialities; for(var j=0; j < meta.length; j++){%>
+                              <span class="black-text">
+                                <%-meta[j].name%>
+                              </span><br>
+                            <%}%>
+                            <a href="product?id=<%-especialistas[i].id%>" class="btn findbtn">Comprar Cita Medica</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              <%}%>
+ 
+
+    <%-include('partials/footer')%>
+  </body>
+</html>
+      

@@ -8,26 +8,83 @@
   <%-include('partials/menu')%>
 
   <center>
-		<h4>Ingreso al Sistema</h4>
+		<!-- <h4>Ingreso al Sistema</h4> -->
 		<div class="row">
+			<br>
 			<div class="input-field col s9 offset-s1">
 				<i class="material-icons prefix">phone</i>
-				<input id="icon_telephone" type="number" class="validate">
-				<label for="icon_telephone">Telephone</label>
+				<input id="phone" type="number" class="">
+				<label for="phone">Telefono</label>
 			</div>
 			<div class="input-field col s9 offset-s1">
 				<i class="material-icons prefix">vpn_key</i>
-				<input id="icon_prefix" type="number" class="validate">
-				<label for="icon_prefix">Pin</label>
+				<input id="pin" type="password" class="">
+				<label for="pin">Pin</label>
 			</div>
-			<a href="#" class="waves-effect waves-light btn"><i class="material-icons left">favorite_border</i>Ingresar</a>
-			<a href="/" class="waves-effect waves-light btn"><i class="material-icons left">file_upload</i>Regresar</a>
+		
+			<a href="#" class="btn findbtn" onclick="ingresar()"><i class="material-icons left">favorite_border</i>Ingresar</a>
+			<!-- <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">file_upload</i>Regresar</a> -->
 		</div>
+		<div class="switch">
+			<label>
+			  Paciente
+			  <input type="checkbox">
+			  <span class="lever"></span>
+			  Medico
+			</label>
+		  </div>
+		  <br>
     <p>
     Solicita tu pin ingresando tu telefono y marcandado 0
     </p>
 	</center>	
   <%-include('partials/footer')%>
+  <script>
+
+		async function get_pin() {
+           
+            $('#message').html('<small>la respuesta del CHATBOT, suele tarder un monento, espere por favor. si la respuesta tarda demasido intentelo nuevamente con un whatsapp valido (8 digitos)</small>');
+            var pin = Math.floor(1000 + Math.random() * 9000);
+           
+			var register = await axios('')
+			$.ajax({
+				url: "https://chatbot.hondaprada.com.bo",
+				data: { phone: $('#phone').val(), message: 'PIN para ingresar al Sistema: '+pin+'\n Te aconsejo que elimines este mensaje lo mas antes pocible, para proteger tu cuenta.', type: 'pin' },
+				dataType: "json",
+				success: function (response) {
+					
+				}
+			});
+               
+         
+        }
+
+	    function ingresar() {
+            if ($('#phone').val() == '' || $('#pin').val() == '') {
+                M.toast({html: 'Todos los Campos son Obligatorios', classes: 'rounded'})
+            } else {
+                if ($('#pin').val() == 0) {
+                    get_pin();
+                } else {
+                    $.ajax({
+                        url: 'https://livemedicedgley.com.bo/api/login/'+$('#phone').val()+'/'+$('#pin').val(),
+                        dataType: "json",
+                        data: { phone: $('#phone').val(), pin: $('#pin').val() },
+                        success: function( data) {
+                         if (data.next) {
+							M.toast({html: 'Bienvenid@: '+data.cliente.name, classes: 'rounded'})
+                            location.href = '/?user='+data.cliente.id
+						 } else {
+							M.toast({html: 'Error en las Credenciales', classes: 'rounded'})
+						 }
+                               
+                           
+                        }
+                    });
+                }
+            }
+        }
+  </script>
   </body>
 </html>
       
